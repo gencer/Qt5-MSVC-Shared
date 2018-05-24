@@ -1,14 +1,14 @@
-# **Qt5-MSVC-Static**
+# **Qt5-MSVC-Shared**
 
-Set of tools to build Qt5 static libs on Windows.
+Set of tools to build Qt5 shared and opensourced libs on Windows.
 
 **Dependencies**
 
  - MSVC 2013-2017 with WDK 8.1/10+ (Community edition works fine)
- - Qt 5.8.0+ sources (Works with previous version with minor edits)
+ - Qt 5.11.0+ sources (Works with previous version with minor edits)
  - Python 2.7 (https://www.python.org/downloads/windows/) (for Qt)
  - Perl (http://strawberryperl.com/) (for OpenSSL)
- - OpenSSL 1.0.x
+ - OpenSSL 1.1.x
 
 Make sure *Python*, *Perl* are all in the *PATH* or add them to *PATH* in options.bat
 
