@@ -5,7 +5,7 @@ IF exist %SSLINSTALLDIR% (
     echo Found OpenSSL
 ) ELSE (
     echo Could not find OpenSSL in %SSLINSTALLDIR%
-    echo use "qt.bat openssl" to install it.
+    echo Download OpenSSL and install or use qt openssl to build & install it.
     exit /b 1
 )
 
@@ -25,11 +25,11 @@ md %QTBUILDDIR%
 cd %QTBUILDDIR%  ||  exit /b %errorlevel%
 
 echo Configuring Qt...
-start /W /BELOWNORMAL "Configuring Qt..." %QTDIR%\configure.bat -prefix %QTINSTALLDIR% -platform %PLATFORM% ^
--opensource -release -confirm-license -opengl dynamic -mp -static -static-runtime -no-shared ^
+start /W /BELOWNORMAL "Configuring Qt..." %QTDIR%\configure.bat -prefix %QTINSTALLDIR% -I %SSLINSTALLDIR%\include -L %SSLINSTALLDIR%\lib -platform %PLATFORM% ^
+-opensource -debug-and-release -confirm-license -no-icu -no-dbus -gui -opengl dynamic -mp -shared ^
 -qt-libpng -qt-libjpeg -qt-zlib -qt-pcre -no-compile-examples -nomake examples ^
--no-icu -optimize-size %EXTRABUILDOPTIONS% ^
--openssl-linked -I %SSLINSTALLDIR%\include -L %SSLINSTALLDIR%\lib OPENSSL_LIBS="-llibeay32 -lssleay32" ^&^& exit
+-optimize-size %EXTRABUILDOPTIONS% ^
+-ssl -openssl-linked" ^&^& exit
 IF %errorlevel% NEQ 0 exit /b %errorlevel%
 
 echo Configuration complete

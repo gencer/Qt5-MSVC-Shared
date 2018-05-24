@@ -2,10 +2,10 @@
 
 
 set MSVCVER=2017
-set QTVER=5.10.1
+set QTVER=5.11.0
 set SSLVER=1.0.2o
 set PREFIX=C:\Qt
-set EXTRABUILDOPTIONS=-qt-sqlite
+set EXTRABUILDOPTIONS=
 set PATH=C:\Python27\;C:\Strawberry\perl\bin;%PATH%
 
 
@@ -26,7 +26,7 @@ set QTBUILDDIR=%QTDIR%\build
 
 set SSLURL=https://www.openssl.org/source/openssl-%SSLVER%.tar.gz
 set SSLBUILDDIR=%SRCDIR%\openssl-%SSLVER%
-set SSLINSTALLDIR=%QTINSTALLDIR%\openssl-%SSLVER%
+set SSLINSTALLDIR=C:\OpenSSL-Win32
 
 set CURLOPTS=-L -C - -O
 set ZOPTS=x -aos -y

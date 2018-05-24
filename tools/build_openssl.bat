@@ -21,7 +21,7 @@ IF exist %SSLINSTALLDIR% (
             md build
             cd build
 
-            start /W /BELOWNORMAL "Configuring OpenSSL..." perl ..\Configure VC-%SSLARCH% enable-static-engine no-shared --prefix=%SSLINSTALLDIR%
+            start /W /BELOWNORMAL "Configuring OpenSSL..." perl ..\Configure VC-%SSLARCH% -fPIC shared --prefix=%SSLINSTALLDIR%
 
             echo Building OpenSSL...
             start /W /BELOWNORMAL "Building OpenSSL..." nmake clean all
@@ -33,7 +33,7 @@ IF exist %SSLINSTALLDIR% (
 
         ) ELSE (
 
-            start /W /BELOWNORMAL "Configuring OpenSSL 1/2..." perl Configure VC-%SSLARCH% enable-static-engine --prefix=%SSLINSTALLDIR%
+            start /W /BELOWNORMAL "Configuring OpenSSL 1/2..." perl Configure VC-%SSLARCH% -fPIC shared --prefix=%SSLINSTALLDIR%
             IF %SSLARCH% == WIN32 start /W /BELOWNORMAL "Configuring OpenSSL 2/2..." ms\do_nasm ^&^& exit
             IF %SSLARCH% == WIN64A start /W /BELOWNORMAL "Configuring OpenSSL 2/2..." ms\do_win64a ^&^& exit
 
