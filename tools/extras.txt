@@ -1,0 +1,14 @@
+in order:
+
+	qt extra qtwebchannel
+	qt extra qtwebsockets
+	qt extra qtxmlpatterns
+	qt extra qtdeclarative # Qt5Quick...
+	qt extra qtquickcontrols2
+	qt extra qttranslations
+	qt extra qtmultimedia
+	qt extra qtsvg
+	qt extra qtwebview
+	qt extra qtwebengine
+	qt extra qtwinextras
+	qt extra qttools # linguist.exe, etc..
