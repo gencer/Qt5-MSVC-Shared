@@ -12,7 +12,7 @@ This projects aims to provide only x86 variant of Qt5 library and its dependenci
 ## How this differs from official Qt Windows binaries?
 Well, there are some differences:
 
-* these binaries are compiled with **MinGW-w64** or **MSVC2017** toolchain and are **x64**,
+* these binaries are compiled with **MSVC2017** toolchain and are **x86**,
 * **some features and modules are disabled**, which makes dependency tree smaller (details are specified in description of each release),
 * distribution is relocatable (via `qtbinpatcher.exe`) and coinstallable with original MSYS2 Qt5 packages,
 * debug/release builds are available,
