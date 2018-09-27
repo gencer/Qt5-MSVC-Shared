@@ -25,3 +25,12 @@ Well, there are some differences:
 1. Use command line to navigate to folder `C:\Qt\XX\bin` and run `qtbinpatcher.exe` and wait for it to finish its job. At this point, installation is complete and Qt library is ready for usage.
 
 Special thanks to MSYS2/MinGW-w64 teams for their amazing job.
+
+
+## Additional Notes:
+
+* Unpack OpenSSL at C:\openssl
+* Put this repository in D:\qt or C:\qt and make sure at least 100GB storage is available in C or D or whatever drive you put.
+* Do not create long folder use C:\qt or D:\qt otherwise build will fail.
+* Update VS 2017 to the latest version. Do not use prebuild binaries from Axure or other Service Provider.
+* Open x64_x86 Cross-compiler and execute Powershell. Then enter this directory and execute build.ps1 file.
