@@ -1,52 +1,27 @@
-# **Qt5-MSVC-Shared**
+# qt5-msvc-shared-builds
+This is attempt to build Qt 5 libraries in minimalistic mode. Output binaries have fewer dependencies, are lighter and thus are smaller.
 
-Set of tools to build Qt5 shared and opensourced libs on Windows.
+This projects aims to provide only x86 variant of Qt5 library and its dependencies. Both release and debug builds are provided.
 
-**Dependencies**
+**All original licenses of all used components (Qt, qtbinpatcher, MinGW-w64, OpenSSL, MSVC) are respected with the additional exception that compiling, linking, and/or using OpenSSL is allowed. Unmodified source code of Qt is used and the license of produced Qt binaries is the same as license used in original OSS Qt libraries.  The build phase of these prebuilt binaries is reproducible, see repository files for build scripts.**
 
- - MSVC 2013-2017 with WDK 8.1/10+ (Community edition works fine)
- - Qt 5.11.0+ sources (Works with previous version with minor edits)
- - Python 2.7 (https://www.python.org/downloads/windows/) (for Qt)
- - Perl (http://strawberryperl.com/) (for OpenSSL)
- - OpenSSL 1.1.x
+**Used OpenSSL v1.02l is taken from [here](https://www.npcglib.org/~stathis/blog/precompiled-openssl/).**
 
-Make sure *Python*, *Perl* are all in the *PATH* or add them to *PATH* in options.bat
+**You can donate to him as he is the original author of this build script [here](https://martinrotter.github.io/donate/). You use this stuff on your own risk.**
 
-You can check the official documentation here:  
-http://doc.qt.io/qt-5/windows-requirements.html  
-http://doc.qt.io/qt-5/windows-building.html  
+## How this differs from official Qt Windows binaries?
+Well, there are some differences:
 
-**Usage**
+* these binaries are compiled with **MinGW-w64** or **MSVC2017** toolchain and are **x64**,
+* **some features and modules are disabled**, which makes dependency tree smaller (details are specified in description of each release),
+* distribution is relocatable (via `qtbinpatcher.exe`) and coinstallable with original MSYS2 Qt5 packages,
+* debug/release builds are available,
+* static/dynamic builds are available,
+* allmost all 3rd-party libs used by Qt are compiled directly into libraries,
 
-First, we need to check the folder names are correct in *tools/options.bat*  
+## How to use MSVC2017 variant
+1. Install Visual Studio 2017 or just Build Tools.
+1. Download [prebuilt Qt binaries](https://github.com/martinrotter/qt5-minimalistic-builds/releases) and unpack them to folder of your choice, for example `C:\Qt\XX`.
+1. Use command line to navigate to folder `C:\Qt\XX\bin` and run `qtbinpatcher.exe` and wait for it to finish its job. At this point, installation is complete and Qt library is ready for usage.
 
-Open a VS command prompt in the repo's root.  
-The links for the prompts are "*VS2017_Win32/64*"
-
-You will need to run *qt.bat* from the VS command prompt.
-
-Run these commands in the following order to build Qt:
- - qt download
- - qt openssl
- - qt setup
- - qt build
-
-**Additional Qt modules**
-
-Those can be downloaded and installed by the script.  
-If you want to install extra Qt modules like qtscript or webkit:
-- Run this command: *qt extra [module-name]*
-- You need to run it once per module
-
-You obviously have to do that after installing Qt.
-Modules can be found here: http://download.qt.io/official_releases/qt/5.10/5.10.1/submodules/
-
-**Configuration**
-
-Only release libs are enabled by default. 
-You can add the debug libs or use the official sdk libs for debugging.
-You can add extra build options for Qt by editing the *EXTRABUILDOPTIONS* var in options.bat
-
-
-You can check the official configuration guide here:
-http://doc.qt.io/qt-5/configure-options.html
+Special thanks to MSYS2/MinGW-w64 teams for their amazing job.
