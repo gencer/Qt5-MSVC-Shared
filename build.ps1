@@ -2,8 +2,8 @@
 # 2. Run powershell.exe from Native Tools cmd.
 # 3. cd to path of qt5-minimalistic-builds repo.
 
-$version_base = "5.11"
-$version = "5.11.2"
+$version_base = "5.12"
+$version = "5.12.0"
 
 $qt_sources_url = "https://download.qt.io/official_releases/qt/" + $version_base + "/" + $version + "/single/qt-everywhere-src-" + $version + ".zip"
 $qt_archive_file = $pwd.Path + "\qt.zip"
@@ -42,7 +42,6 @@ nmake dist-clean
 & "$tools_folder\jom.exe"
 nmake install
 
-Read-Host -Prompt "Press Enter to continue"
 
 # Copy qtbinpatcher, OpenSSL.
 cp "$tools_folder\qtbinpatcher.*" "$prefix_folder\bin\"
@@ -50,6 +49,8 @@ cp "$openssl_bin_folder\*eay32MD.dll" "$prefix_folder\bin\"
 
 # Fixup OpenSSL DLL paths.
 gci -r -include "*.prl" $prefix_folder | foreach-object { $a = $_.fullname; ( get-content $a ) | foreach-object { $_ -replace "C:\\\\openssl\\\\lib", '$$$$[QT_INSTALL_LIBS]\\' } | set-content $a }
+
+Read-Host -Prompt "Press Enter to continue"
 
 # Create final archive.
 & "$tools_folder\7za.exe" a -t7z "$prefix_base_folder.7z" "$prefix_folder" -mmt -mx9
